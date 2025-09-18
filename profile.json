@@ -1,4 +1,22 @@
 {
+  "theme": {
+    "name": "cyberpunk",
+    "colors": {
+      "primary": "#00f5ff",
+      "secondary": "#ff0080",
+      "accent": "#39ff14",
+      "background": "#0a0a0a",
+      "surface": "#1a1a1a",
+      "text": "#ffffff",
+      "textSecondary": "#b0b0b0"
+    },
+    "effects": {
+      "glitch": true,
+      "neon": true,
+      "particles": true,
+      "hologram": true
+    }
+  },
   "personal": {
     "name": "张三",
     "title": "全栈开发工程师",
@@ -71,5 +89,79 @@
     "linkedin": "https://linkedin.com/in/username",
     "blog": "https://blog.example.com",
     "wechat": "your_wechat_id"
+  },
+  "themes": {
+    "cyberpunk": {
+      "name": "赛博朋克",
+      "colors": {
+        "primary": "#00f5ff",
+        "secondary": "#ff0080",
+        "accent": "#39ff14",
+        "background": "#0a0a0a",
+        "surface": "#1a1a1a",
+        "text": "#ffffff",
+        "textSecondary": "#b0b0b0"
+      },
+      "effects": {
+        "glitch": true,
+        "neon": true,
+        "particles": true,
+        "hologram": true
+      }
+    },
+    "matrix": {
+      "name": "黑客帝国",
+      "colors": {
+        "primary": "#00ff41",
+        "secondary": "#008f11",
+        "accent": "#39ff14",
+        "background": "#000000",
+        "surface": "#001100",
+        "text": "#00ff41",
+        "textSecondary": "#008f11"
+      },
+      "effects": {
+        "glitch": false,
+        "neon": true,
+        "particles": true,
+        "hologram": false
+      }
+    },
+    "neon": {
+      "name": "霓虹科技",
+      "colors": {
+        "primary": "#ff006e",
+        "secondary": "#8338ec",
+        "accent": "#3a86ff",
+        "background": "#0d1117",
+        "surface": "#161b22",
+        "text": "#ffffff",
+        "textSecondary": "#8b949e"
+      },
+      "effects": {
+        "glitch": false,
+        "neon": true,
+        "particles": true,
+        "hologram": true
+      }
+    },
+    "quantum": {
+      "name": "量子蓝",
+      "colors": {
+        "primary": "#00d4ff",
+        "secondary": "#0099cc",
+        "accent": "#66ffff",
+        "background": "#001122",
+        "surface": "#002244",
+        "text": "#ffffff",
+        "textSecondary": "#99ccff"
+      },
+      "effects": {
+        "glitch": true,
+        "neon": true,
+        "particles": true,
+        "hologram": true
+      }
+    }
   }
 }
