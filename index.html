@@ -5,49 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>欢迎来到我的个人主页</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h1>你好，我是 [你的名字]</h1>
-            <p>欢迎来到我的个人主页</p>
+            <div class="header-content">
+                <h1>你好，我是 [你的名字]</h1>
+                <p>前端开发者 | UI/UX 设计师</p>
+                <a href="#contact" class="btn">联系我</a>
+            </div>
         </div>
     </header>
 
     <section id="about">
         <div class="container">
             <h2>关于我</h2>
-            <p>你好，我是一个热衷于技术和设计的开发者。喜欢通过编程解决问题，创造出有意义的产品。</p>
-            <p>我的技能包括前端开发、后端开发、UI/UX 设计等，乐于学习新的技术，探索未知的领域。</p>
+            <div class="about-content">
+                <img src="https://via.placeholder.com/200" alt="我的头像" class="about-img">
+                <p>你好，我是一个充满热情的前端开发者，擅长设计与开发响应式、用户友好的网站和应用程序。我热衷于学习新技术，创造美观且实用的用户体验。</p>
+            </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="container">
-            <h2>技能展示</h2>
-            <ul>
-                <li>HTML5 & CSS3</li>
-                <li>JavaScript / React</li>
-                <li>Node.js & Express</li>
-                <li>UI/UX 设计</li>
-                <li>Git & GitHub</li>
-            </ul>
+            <h2>我的技能</h2>
+            <div class="skills-list">
+                <div class="skill-card">
+                    <h3>前端开发</h3>
+                    <p>熟练使用 HTML, CSS, JavaScript，React，Vue 等开发框架，打造响应式页面。</p>
+                </div>
+                <div class="skill-card">
+                    <h3>UI/UX 设计</h3>
+                    <p>精通 Figma 和 Sketch，能够设计出符合用户需求的界面和体验。</p>
+                </div>
+                <div class="skill-card">
+                    <h3>后端开发</h3>
+                    <p>具备 Node.js、Express 等后端开发经验，能够进行全栈开发。</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="container">
             <h2>我的项目</h2>
-            <div class="project-card">
-                <h3>项目名称 1</h3>
-                <p>这是我的第一个项目，主要使用 HTML、CSS 和 JavaScript 来构建响应式网页。</p>
-                <a href="#">查看项目</a>
-            </div>
-            <div class="project-card">
-                <h3>项目名称 2</h3>
-                <p>这是一个使用 React 构建的单页应用，功能包括动态加载内容和与后端 API 的交互。</p>
-                <a href="#">查看项目</a>
+            <div class="project-cards">
+                <div class="project-card">
+                    <h3>个人博客</h3>
+                    <p>这是一个基于 React 和 Node.js 构建的博客系统，支持文章发布与评论功能。</p>
+                    <a href="#">查看项目</a>
+                </div>
+                <div class="project-card">
+                    <h3>电商平台</h3>
+                    <p>这是一个电商网站，具备商品浏览、购物车、支付等功能，使用 Vue.js 和 Firebase 构建。</p>
+                    <a href="#">查看项目</a>
+                </div>
             </div>
         </div>
     </section>
@@ -55,7 +70,7 @@
     <section id="contact">
         <div class="container">
             <h2>联系我</h2>
-            <p>你可以通过以下方式与我取得联系：</p>
+            <p>如果你有任何问题或合作需求，欢迎通过以下方式联系我：</p>
             <ul>
                 <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
                 <li>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
