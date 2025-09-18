@@ -1,0 +1,75 @@
+{
+  "personal": {
+    "name": "张三",
+    "title": "全栈开发工程师",
+    "subtitle": "Java | Go | Vue.js 技术专家",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    "email": "zhangsan@example.com",
+    "phone": "+86 138-0000-0000",
+    "location": "北京, 中国",
+    "bio": "拥有5年以上全栈开发经验，专注于企业级应用开发和微服务架构设计。热爱技术创新，追求代码质量和用户体验的完美结合。"
+  },
+  "skills": [
+    {
+      "category": "后端开发",
+      "items": [
+        { "name": "Java", "level": 95, "icon": "☕", "color": "#f89820" },
+        { "name": "Go", "level": 90, "icon": "🐹", "color": "#00add8" },
+        { "name": "Spring Boot", "level": 92, "icon": "🍃", "color": "#6db33f" },
+        { "name": "MySQL", "level": 88, "icon": "🗄️", "color": "#4479a1" }
+      ]
+    },
+    {
+      "category": "前端开发",
+      "items": [
+        { "name": "Vue.js", "level": 93, "icon": "💚", "color": "#4fc08d" },
+        { "name": "JavaScript", "level": 90, "icon": "⚡", "color": "#f7df1e" },
+        { "name": "TypeScript", "level": 85, "icon": "🔷", "color": "#3178c6" },
+        { "name": "React", "level": 80, "icon": "⚛️", "color": "#61dafb" }
+      ]
+    },
+    {
+      "category": "开发工具",
+      "items": [
+        { "name": "Docker", "level": 87, "icon": "🐳", "color": "#2496ed" },
+        { "name": "Kubernetes", "level": 82, "icon": "☸️", "color": "#326ce5" },
+        { "name": "Git", "level": 90, "icon": "📝", "color": "#f05032" },
+        { "name": "Linux", "level": 85, "icon": "🐧", "color": "#fcc624" }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "科技有限公司",
+      "position": "高级全栈工程师",
+      "duration": "2021 - 至今",
+      "description": "负责企业级微服务架构设计与开发，使用Java Spring Boot和Vue.js构建高性能Web应用。"
+    },
+    {
+      "company": "互联网公司",
+      "position": "后端开发工程师",
+      "duration": "2019 - 2021",
+      "description": "参与大型电商平台后端系统开发，使用Go语言构建高并发API服务，优化系统性能。"
+    }
+  ],
+  "projects": [
+    {
+      "name": "企业管理系统",
+      "tech": "Java + Vue.js + MySQL",
+      "description": "基于微服务架构的企业级管理系统，支持多租户，日活跃用户10万+",
+      "link": "#"
+    },
+    {
+      "name": "实时数据分析平台",
+      "tech": "Go + React + Redis",
+      "description": "高性能实时数据处理平台，支持千万级数据实时分析和可视化展示",
+      "link": "#"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/username",
+    "linkedin": "https://linkedin.com/in/username",
+    "blog": "https://blog.example.com",
+    "wechat": "your_wechat_id"
+  }
+}
