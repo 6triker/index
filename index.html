@@ -219,63 +219,113 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title neon-text">联系我</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item cyber-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+            <div class="contact-subtitle">
+                <p>欢迎与我联系，讨论技术或合作机会</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- 联系信息卡片 -->
+                <div class="contact-info-section">
+                    <h3 class="contact-section-title">联系方式</h3>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h4>邮箱地址</h4>
+                                <p id="contact-email">loading...</p>
+                                <span class="contact-card-action">点击发送邮件</span>
+                            </div>
+                            <div class="contact-card-glow"></div>
                         </div>
-                        <div class="contact-details">
-                            <span class="contact-label">邮箱</span>
-                            <span id="email" class="contact-value"></span>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h4>电话号码</h4>
+                                <p id="contact-phone">loading...</p>
+                                <span class="contact-card-action">点击拨打电话</span>
+                            </div>
+                            <div class="contact-card-glow"></div>
                         </div>
-                        <div class="contact-glow"></div>
-                    </div>
-                    <div class="contact-item cyber-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <h4>所在位置</h4>
+                                <p id="contact-location">loading...</p>
+                                <span class="contact-card-action">查看地图位置</span>
+                            </div>
+                            <div class="contact-card-glow"></div>
                         </div>
-                        <div class="contact-details">
-                            <span class="contact-label">电话</span>
-                            <span id="phone" class="contact-value"></span>
-                        </div>
-                        <div class="contact-glow"></div>
-                    </div>
-                    <div class="contact-item cyber-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <span class="contact-label">位置</span>
-                            <span id="location" class="contact-value"></span>
-                        </div>
-                        <div class="contact-glow"></div>
                     </div>
                 </div>
 
-                <!-- 联系表单 -->
-                <div class="contact-form-container">
-                    <form class="contact-form cyber-form">
-                        <div class="form-group">
-                            <input type="text" id="contact-name" class="form-input" placeholder=" " required>
-                            <label for="contact-name" class="form-label">姓名</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="contact-email" class="form-input" placeholder=" " required>
-                            <label for="contact-email" class="form-label">邮箱</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="contact-message" class="form-input form-textarea" placeholder=" " required></textarea>
-                            <label for="contact-message" class="form-label">消息</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary cyber-btn">
-                            <span class="btn-text">发送消息</span>
-                            <div class="btn-glow"></div>
-                        </button>
-                    </form>
+                <!-- 社交媒体部分 -->
+                <div class="social-media-section">
+                    <h3 class="contact-section-title">社交媒体</h3>
+                    <div class="social-grid">
+                        <a href="#" class="social-card" data-platform="github">
+                            <div class="social-card-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="social-card-content">
+                                <h4>GitHub</h4>
+                                <p>查看我的代码仓库</p>
+                            </div>
+                            <div class="social-card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="social-card-glow"></div>
+                        </a>
+
+                        <a href="#" class="social-card" data-platform="linkedin">
+                            <div class="social-card-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="social-card-content">
+                                <h4>LinkedIn</h4>
+                                <p>专业社交网络</p>
+                            </div>
+                            <div class="social-card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="social-card-glow"></div>
+                        </a>
+
+                        <a href="#" class="social-card" data-platform="wechat">
+                            <div class="social-card-icon">
+                                <i class="fab fa-weixin"></i>
+                            </div>
+                            <div class="social-card-content">
+                                <h4>微信</h4>
+                                <p>即时通讯联系</p>
+                            </div>
+                            <div class="social-card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="social-card-glow"></div>
+                        </a>
+
+                        <a href="#" class="social-card" data-platform="email">
+                            <div class="social-card-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <div class="social-card-content">
+                                <h4>发送邮件</h4>
+                                <p>直接邮件联系</p>
+                            </div>
+                            <div class="social-card-arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="social-card-glow"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

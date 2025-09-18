@@ -1,90 +1,90 @@
 # 🚀 高科技个人介绍页面
 
-一个具有强烈科技感和未来感的个人介绍静态页面，支持多主题切换和JSON配置。
+一个具有强烈科技感和未来感的个人介绍静态页面，支持多种主题切换，完全通过JSON配置。
 
-## ✨ 特性
+## ✨ 主要特性
 
 ### 🎨 视觉效果
-- **8种科技主题**：赛博朋克、黑客帝国、霓虹科技、量子蓝、合成波、终端绿、极地蓝、烈焰红
-- **粒子动画系统**：动态粒子背景效果
-- **故障效果**：文字故障动画
+- **8种科技主题**：赛博朋克、黑客帝国、霓虹科技、量子蓝等
+- **故障效果**：文字故障动画，增强赛博朋克感
 - **霓虹灯效果**：发光文字和边框
-- **全息投影效果**：半透明叠加层
-- **数字雨效果**：Matrix风格字符雨
-- **扫描线效果**：科技感扫描动画
+- **粒子动画**：动态粒子背景
 - **3D悬停效果**：鼠标悬停时的3D变换
 
 ### 🎯 交互功能
-- **打字机效果**：文字逐字显示动画
-- **计数器动画**：数字递增动画
-- **主题实时切换**：8种主题无缝切换
+- **主题实时切换**：右上角主题选择器
+- **平滑滚动导航**：点击导航自动滚动到对应部分
 - **响应式设计**：完美适配移动端
-- **加载动画**：科技感加载屏幕
-- **表单验证**：联系表单交互效果
-- **波纹点击效果**：点击产生波纹动画
-- **鼠标跟随效果**：自定义光标
+- **社交媒体链接**：支持GitHub、LinkedIn、微信、邮箱
 
-### 📱 响应式特性
-- **移动端优化**：汉堡菜单、触摸友好
-- **性能优化**：移动端自动减少特效
-- **无障碍支持**：支持高对比度和减少动画模式
-- **跨浏览器兼容**：现代浏览器完美支持
-
-## 🛠️ 技术栈
-
-- **HTML5**：语义化结构
-- **CSS3**：现代CSS特性、动画、渐变
-- **JavaScript ES6+**：模块化、异步处理
-- **JSON配置**：数据驱动的内容管理
-
-## 📁 项目结构
-
-```
-index/
-├── index.html          # 主页面
-├── styles.css          # 样式文件
-├── script.js           # 交互脚本
-├── profile.json        # 配置文件
-├── README.md          # 说明文档
-└── CNAME              # 域名配置
-```
+### ⚙️ JSON配置
+- **完全数据驱动**：所有内容通过profile.json配置
+- **个人信息**：姓名、职位、头像、联系方式
+- **技能展示**：技能分类、等级、图标、颜色
+- **社交链接**：各平台链接配置
 
 ## 🚀 快速开始
 
 ### 1. 启动本地服务器
 ```bash
-# Python 3
+# 使用Python
 python -m http.server 8000
 
-# Node.js
+# 或使用Node.js
 npx serve .
-
-# PHP
-php -S localhost:8000
 ```
 
 ### 2. 访问页面
-打开浏览器访问 `http://localhost:8000`
+打开浏览器访问：http://localhost:8000
 
-## 配置说明
+### 3. 自定义内容
+编辑 `profile.json` 文件来修改个人信息。
 
-### profile.json 配置文件结构
+## 📁 文件结构
 
+```
+├── index.html          # 主页面（唯一需要的HTML文件）
+├── styles.css          # 样式文件
+├── script.js           # JavaScript功能
+├── profile.json        # 配置文件
+└── README.md          # 说明文档
+```
+
+## ⚙️ 配置说明
+
+### 个人信息配置
 ```json
 {
   "personal": {
     "name": "你的姓名",
-    "title": "职位标题",
-    "subtitle": "技能描述",
+    "title": "你的职位",
     "avatar": "头像图片URL",
     "email": "邮箱地址",
     "phone": "电话号码",
     "location": "所在地",
     "bio": "个人简介"
-  },
+  }
+}
+```
+
+### 社交媒体配置
+```json
+{
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "wechat": "your_wechat_id",
+    "email": "your@email.com"
+  }
+}
+```
+
+### 技能配置
+```json
+{
   "skills": [
     {
-      "category": "技能分类",
+      "category": "技能分类名称",
       "items": [
         {
           "name": "技能名称",
@@ -94,127 +94,40 @@ php -S localhost:8000
         }
       ]
     }
-  ],
-  "experience": [
-    {
-      "company": "公司名称",
-      "position": "职位",
-      "duration": "时间段",
-      "description": "工作描述"
-    }
-  ],
-  "projects": [
-    {
-      "name": "项目名称",
-      "tech": "技术栈",
-      "description": "项目描述",
-      "link": "项目链接"
-    }
-  ],
-  "social": {
-    "github": "GitHub链接",
-    "linkedin": "LinkedIn链接",
-    "blog": "博客链接",
-    "wechat": "微信号"
-  }
+  ]
 }
 ```
 
-### 自定义技能图标
+## 🎨 主题展示
 
-技能图标支持：
-- Emoji表情符号：🔥 ⚡ 💻 🚀
-- Font Awesome图标类名
-- 自定义图片URL
+| 主题 | 特色 | 颜色方案 |
+|------|------|----------|
+| 赛博朋克 | 蓝粉配色，故障效果 | 青蓝 + 洋红 |
+| 黑客帝国 | 绿色矩阵风格 | 矩阵绿 |
+| 霓虹科技 | 紫粉渐变 | 紫色 + 蓝色 |
+| 量子蓝 | 蓝色科技感 | 量子蓝 |
 
-### 颜色配置
+## 🔧 使用说明
 
-每个技能可以设置自定义颜色，支持：
-- 十六进制颜色：`#ff6b6b`
-- RGB颜色：`rgb(255, 107, 107)`
-- 渐变色：`linear-gradient(45deg, #ff6b6b, #4ecdc4)`
+1. **修改个人信息**：编辑 `profile.json` 中的 `personal` 部分
+2. **添加技能**：在 `skills` 数组中添加新的技能分类和项目
+3. **配置社交链接**：在 `social` 对象中添加你的社交媒体链接
+4. **切换主题**：使用右上角的主题选择器实时切换
 
-## 自定义样式
+## 🌟 技术栈
 
-### 修改主题色彩
+- **HTML5**：语义化结构
+- **CSS3**：现代样式特性（Grid、Flexbox、Custom Properties）
+- **JavaScript ES6+**：模块化、异步处理
+- **JSON**：数据配置
 
-在 `styles.css` 文件的 `:root` 选择器中修改CSS变量：
-
-```css
-:root {
-    --primary-color: #667eea;      /* 主色调 */
-    --secondary-color: #764ba2;    /* 次要色调 */
-    --accent-color: #f093fb;       /* 强调色 */
-    /* 更多颜色变量... */
-}
-```
-
-### 添加新的动画效果
-
-在 `script.js` 中的 `initializeAnimations()` 函数中添加自定义动画。
-
-### 修改布局
-
-通过修改 `styles.css` 中的网格布局和响应式断点来调整页面布局。
-
-## 浏览器兼容性
+## 📱 浏览器支持
 
 - Chrome 60+
 - Firefox 55+
 - Safari 12+
 - Edge 79+
 
-## 部署
+---
 
-### 静态托管
-
-可以部署到以下平台：
-- GitHub Pages
-- Netlify
-- Vercel
-- 阿里云OSS
-- 腾讯云COS
-
-### 本地服务器
-
-使用Python快速启动本地服务器：
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
-```
-
-然后访问 `http://localhost:8000`
-
-## 常见问题
-
-### Q: 如何更换头像？
-A: 在 `profile.json` 中修改 `personal.avatar` 字段，可以使用本地图片路径或在线图片URL。
-
-### Q: 如何添加新的技能分类？
-A: 在 `profile.json` 的 `skills` 数组中添加新的对象，包含 `category` 和 `items` 字段。
-
-### Q: 如何修改页面标题？
-A: 修改 `index.html` 中的 `<title>` 标签内容。
-
-### Q: 如何添加更多社交链接？
-A: 在 `profile.json` 的 `social` 对象中添加新字段，然后在 `script.js` 中添加相应的渲染逻辑。
-
-## 许可证
-
-MIT License - 可自由使用和修改
-
-## 贡献
-
-欢迎提交Issue和Pull Request来改进这个项目！
-
-## 更新日志
-
-### v1.0.0
-- 初始版本发布
-- 基础功能实现
-- 响应式设计
-- JSON配置支持
+**享受你的高科技个人介绍页面！** 🚀

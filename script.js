@@ -8,71 +8,104 @@ let isLoading = true;
 document.addEventListener('DOMContentLoaded', function() {
     showLoadingScreen();
     loadProfileData();
-    initializeThemeSelector();
-    initializeNavigation();
-    initializeAnimations();
-    initializeParticleSystem();
-    initializeMatrixRain();
-    initializeTypewriter();
-    initializeCounters();
-    initializeFormEffects();
-    hideLoadingScreen();
 });
 
 // 加载个人资料数据
 async function loadProfileData() {
     try {
+        console.log('开始加载 profile.json...');
         const response = await fetch('profile.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         profileData = await response.json();
+        console.log('Profile data loaded successfully:', profileData);
         renderProfile();
     } catch (error) {
         console.error('加载个人资料数据失败:', error);
         // 使用默认数据
         profileData = getDefaultData();
+        console.log('Using default data:', profileData);
         renderProfile();
     }
 }
 
 // 渲染个人资料
 function renderProfile() {
-    renderPersonalInfo();
-    renderSkills();
-    renderExperience();
-    renderProjects();
-    renderContact();
+    try {
+        console.log('开始渲染个人资料...');
+        renderPersonalInfo();
+        renderSkills();
+        renderExperience();
+        renderProjects();
+        renderContact();
+
+        console.log('个人资料渲染完成，初始化其他功能...');
+
+        // 数据加载完成后初始化其他功能
+        initializeThemeSelector();
+        initializeNavigation();
+        initializeAnimations();
+
+        // 延迟初始化特效，确保DOM已渲染
+        setTimeout(() => {
+            initializeParticleSystem();
+            initializeMatrixRain();
+            initializeTypewriter();
+            initializeCounters();
+            initializeSocialLinks();
+        }, 100);
+
+        hideLoadingScreen();
+    } catch (error) {
+        console.error('渲染个人资料时出错:', error);
+    }
 }
 
 // 渲染个人信息
 function renderPersonalInfo() {
-    const { personal, social } = profileData;
+    const { personal } = profileData;
 
-    document.getElementById('avatar').src = personal.avatar;
+    // 安全设置元素内容的函数
+    function safeSetContent(id, content) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = content;
+        } else {
+            console.warn(`Element with id '${id}' not found`);
+        }
+    }
 
-    // 设置故障效果的data-text属性
-    const nameElement = document.getElementById('name');
-    nameElement.textContent = personal.name;
-    nameElement.setAttribute('data-text', personal.name);
+    function safeSetAttribute(id, attribute, value) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.setAttribute(attribute, value);
+        }
+    }
 
-    document.getElementById('title').textContent = personal.title;
-    document.getElementById('subtitle').textContent = personal.subtitle;
-    document.getElementById('bio').textContent = personal.bio;
-    document.getElementById('email').textContent = personal.email;
-    document.getElementById('phone').textContent = personal.phone;
-    document.getElementById('location').textContent = personal.location;
+    function safeSetSrc(id, src) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.src = src;
+        }
+    }
 
-    // 社交链接
-    if (social.github) {
-        document.getElementById('github-link').href = social.github;
-    }
-    if (social.linkedin) {
-        document.getElementById('linkedin-link').href = social.linkedin;
-    }
-    if (social.blog) {
-        document.getElementById('blog-link').href = social.blog;
-    }
-    if (social.wechat) {
-        document.getElementById('wechat-link').href = `weixin://contacts/profile/${social.wechat}`;
-    }
+    // 设置头像
+    safeSetSrc('avatar', personal.avatar);
+
+    // 设置基本信息
+    safeSetContent('name', personal.name);
+    safeSetAttribute('name', 'data-text', personal.name);
+    safeSetContent('title', personal.title);
+    safeSetContent('subtitle', personal.subtitle);
+    safeSetContent('bio', personal.bio);
+
+    // 设置联系信息（使用正确的ID）
+    safeSetContent('contact-email', personal.email);
+    safeSetContent('contact-phone', personal.phone);
+    safeSetContent('contact-location', personal.location);
+
+    // 社交链接处理将在renderContact函数中处理
 }
 
 // 渲染技能
@@ -168,13 +201,48 @@ function renderProjects() {
 
 // 渲染联系信息
 function renderContact() {
-    // 联系信息已在renderPersonalInfo中处理
+    const { personal, social } = profileData;
+
+    // 安全设置元素内容的函数
+    function safeSetContent(id, content) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = content;
+        }
+    }
+
+    // 更新联系信息
+    safeSetContent('contact-email', personal.email);
+    safeSetContent('contact-phone', personal.phone);
+    safeSetContent('contact-location', personal.location);
+
+    // 更新社交媒体链接
+    if (social) {
+        const socialCards = document.querySelectorAll('.social-card');
+        socialCards.forEach(card => {
+            const platform = card.getAttribute('data-platform');
+            if (social[platform]) {
+                card.href = social[platform];
+                if (platform === 'email') {
+                    card.href = `mailto:${social[platform]}`;
+                }
+            }
+        });
+    }
 }
 
 // 主题切换功能
 function initializeThemeSelector() {
+    console.log('Initializing theme selector...');
     const themeSelect = document.getElementById('theme-select');
+
+    if (!themeSelect) {
+        console.error('Theme selector not found!');
+        return;
+    }
+
     const savedTheme = localStorage.getItem('selectedTheme') || 'cyberpunk';
+    console.log('Saved theme:', savedTheme);
 
     // 设置保存的主题
     themeSelect.value = savedTheme;
@@ -183,6 +251,7 @@ function initializeThemeSelector() {
     // 监听主题切换
     themeSelect.addEventListener('change', function() {
         const selectedTheme = this.value;
+        console.log('Theme changed to:', selectedTheme);
         applyTheme(selectedTheme);
         localStorage.setItem('selectedTheme', selectedTheme);
     });
@@ -190,9 +259,19 @@ function initializeThemeSelector() {
 
 function applyTheme(themeName) {
     currentTheme = themeName;
+
+    // 检查数据是否已加载
+    if (!profileData || !profileData.themes) {
+        console.log('Profile data not loaded yet, waiting...');
+        return;
+    }
+
     const theme = profileData.themes[themeName];
 
-    if (!theme) return;
+    if (!theme) {
+        console.error('Theme not found:', themeName);
+        return;
+    }
 
     const root = document.documentElement;
     const colors = theme.colors;
@@ -289,20 +368,50 @@ function initializeNavigation() {
     // 滚动时导航栏效果
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
+
+        // 更新活动导航链接
+        updateActiveNavLink();
     });
+
+    // 更新活动导航链接
+    function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    }
 }
 
 // 粒子系统
 function initializeParticleSystem() {
     const container = document.getElementById('particles-container');
-    if (!container) return;
+    if (!container) {
+        console.log('Particles container not found, skipping particle system');
+        return;
+    }
+
+    console.log('Initializing particle system...');
 
     // 清除现有粒子
     container.innerHTML = '';
@@ -369,7 +478,12 @@ function animateParticles() {
 // 数字雨效果
 function initializeMatrixRain() {
     const container = document.querySelector('.matrix-rain');
-    if (!container) return;
+    if (!container) {
+        console.log('Matrix rain container not found, skipping matrix rain');
+        return;
+    }
+
+    console.log('Initializing matrix rain...');
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const columns = Math.floor(window.innerWidth / 20);
@@ -501,6 +615,28 @@ function getDefaultData() {
             github: "#",
             linkedin: "#",
             blog: "#"
+        },
+        themes: {
+            cyberpunk: {
+                name: "赛博朋克",
+                colors: {
+                    primary: "#00f5ff",
+                    secondary: "#ff0080",
+                    accent: "#39ff14",
+                    background: "#0a0a0a",
+                    surface: "#1a1a1a",
+                    text: "#ffffff",
+                    textSecondary: "#b0b0b0"
+                },
+                effects: {
+                    glitch: true,
+                    neon: true,
+                    particles: true,
+                    hologram: true,
+                    matrixRain: false,
+                    scanLines: true
+                }
+            }
         }
     };
 }
@@ -508,6 +644,12 @@ function getDefaultData() {
 // 打字机效果
 function initializeTypewriter() {
     const elements = document.querySelectorAll('.typewriter');
+    if (elements.length === 0) {
+        console.log('No typewriter elements found');
+        return;
+    }
+
+    console.log(`Initializing typewriter for ${elements.length} elements...`);
     elements.forEach(element => {
         const text = element.textContent;
         element.textContent = '';
@@ -553,52 +695,170 @@ function animateCounter(statItem) {
     }, 16);
 }
 
-// 表单效果
-function initializeFormEffects() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
+// 联系卡片和社交链接效果
+function initializeSocialLinks() {
+    // 初始化联系卡片
+    initializeContactCards();
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // 初始化社交媒体卡片
+    const socialCards = document.querySelectorAll('.social-card');
 
-        // 添加提交动画
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.querySelector('.btn-text').textContent;
+    socialCards.forEach(card => {
+        const platform = card.getAttribute('data-platform');
 
-        submitBtn.querySelector('.btn-text').textContent = '发送中...';
-        submitBtn.disabled = true;
+        // 检查是否已配置链接
+        const hasConfiguredLink = profileData.social && profileData.social[platform];
 
-        // 模拟发送过程
-        setTimeout(() => {
-            submitBtn.querySelector('.btn-text').textContent = '发送成功!';
-            setTimeout(() => {
-                submitBtn.querySelector('.btn-text').textContent = originalText;
-                submitBtn.disabled = false;
-                form.reset();
-            }, 2000);
-        }, 1500);
+        if (!hasConfiguredLink) {
+            // 如果没有配置链接，添加点击提示
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // 根据平台显示不同的提示信息
+                let message = '';
+                switch(platform) {
+                    case 'github':
+                        message = '请在profile.json中配置您的GitHub链接';
+                        break;
+                    case 'linkedin':
+                        message = '请在profile.json中配置您的LinkedIn链接';
+                        break;
+                    case 'wechat':
+                        message = '请在profile.json中配置您的微信号';
+                        break;
+                    case 'email':
+                        message = '请在profile.json中配置您的邮箱地址';
+                        break;
+                    default:
+                        message = '请在profile.json中配置相应的联系方式';
+                }
+
+                // 创建提示框
+                showNotification(message);
+            });
+        } else {
+            // 如果已配置链接，设置正确的href并允许正常跳转
+            card.href = profileData.social[platform];
+            if (platform === 'email') {
+                card.href = `mailto:${profileData.social[platform]}`;
+            }
+        }
     });
+}
 
-    // 输入框焦点效果
-    const inputs = form.querySelectorAll('.form-input');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentNode.classList.add('focused');
+// 初始化联系卡片
+function initializeContactCards() {
+    const contactCards = document.querySelectorAll('.contact-card');
+
+    contactCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            const value = this.querySelector('p').textContent;
+
+            if (icon.classList.contains('fa-envelope')) {
+                // 邮箱卡片
+                window.location.href = `mailto:${value}`;
+            } else if (icon.classList.contains('fa-phone')) {
+                // 电话卡片
+                window.location.href = `tel:${value}`;
+            } else if (icon.classList.contains('fa-map-marker-alt')) {
+                // 位置卡片
+                const encodedLocation = encodeURIComponent(value);
+                window.open(`https://www.google.com/maps/search/${encodedLocation}`, '_blank');
+            }
         });
 
-        input.addEventListener('blur', function() {
-            if (!this.value) {
-                this.parentNode.classList.remove('focused');
+        // 添加复制功能
+        card.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            const value = this.querySelector('p').textContent;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(value).then(() => {
+                    showNotification('已复制到剪贴板: ' + value);
+                });
+            } else {
+                // 降级方案
+                const textArea = document.createElement('textarea');
+                textArea.value = value;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('已复制到剪贴板: ' + value);
             }
         });
     });
 }
 
+// 显示通知
+function showNotification(message) {
+    // 移除已存在的通知
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // 创建新通知
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-info-circle"></i>
+            <span>${message}</span>
+        </div>
+    `;
+
+    // 添加样式
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: rgba(0, 245, 255, 0.1);
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        padding: 1rem 1.5rem;
+        color: var(--text-primary);
+        font-family: 'Orbitron', monospace;
+        font-size: 0.9rem;
+        z-index: 10000;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 5px 20px rgba(0, 245, 255, 0.3);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    // 显示动画
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+
+    // 自动隐藏
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
 // 加载动画
 function showLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
+    if (!loadingScreen) {
+        console.log('Loading screen not found, skipping...');
+        return;
+    }
+
     const progressBar = document.querySelector('.loading-progress');
     const percentage = document.querySelector('.loading-percentage');
+
+    if (!progressBar || !percentage) {
+        console.log('Loading progress elements not found');
+        return;
+    }
 
     let progress = 0;
     const interval = setInterval(() => {
@@ -616,13 +876,15 @@ function showLoadingScreen() {
 function hideLoadingScreen() {
     setTimeout(() => {
         const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.classList.add('hidden');
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
 
-        // 启动入场动画
-        setTimeout(() => {
-            document.body.classList.add('loaded');
-        }, 500);
-    }, 2000);
+            // 启动入场动画
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 500);
+        }
+    }, 1000); // 减少等待时间
 }
 
 // 3D鼠标跟随效果

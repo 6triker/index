@@ -18,7 +18,7 @@
     }
   },
   "personal": {
-    "name": "张三",
+    "name": "薛建民",
     "title": "全栈开发工程师",
     "subtitle": "Java | Go | Vue.js 技术专家",
     "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
@@ -26,6 +26,12 @@
     "phone": "+86 138-0000-0000",
     "location": "北京, 中国",
     "bio": "拥有5年以上全栈开发经验，专注于企业级应用开发和微服务架构设计。热爱技术创新，追求代码质量和用户体验的完美结合。"
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "wechat": "your_wechat_id",
+    "email": "zhangsan@example.com"
   },
   "skills": [
     {
