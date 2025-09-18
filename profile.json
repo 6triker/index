@@ -106,7 +106,9 @@
         "glitch": true,
         "neon": true,
         "particles": true,
-        "hologram": true
+        "hologram": true,
+        "matrixRain": false,
+        "scanLines": true
       }
     },
     "matrix": {
@@ -124,7 +126,9 @@
         "glitch": false,
         "neon": true,
         "particles": true,
-        "hologram": false
+        "hologram": false,
+        "matrixRain": true,
+        "scanLines": false
       }
     },
     "neon": {
@@ -142,7 +146,9 @@
         "glitch": false,
         "neon": true,
         "particles": true,
-        "hologram": true
+        "hologram": true,
+        "matrixRain": false,
+        "scanLines": true
       }
     },
     "quantum": {
@@ -160,8 +166,112 @@
         "glitch": true,
         "neon": true,
         "particles": true,
-        "hologram": true
+        "hologram": true,
+        "matrixRain": false,
+        "scanLines": true
       }
+    },
+    "synthwave": {
+      "name": "合成波",
+      "colors": {
+        "primary": "#ff0080",
+        "secondary": "#00ffff",
+        "accent": "#ffff00",
+        "background": "#1a0033",
+        "surface": "#2d0066",
+        "text": "#ffffff",
+        "textSecondary": "#cc99ff"
+      },
+      "effects": {
+        "glitch": true,
+        "neon": true,
+        "particles": true,
+        "hologram": true,
+        "matrixRain": false,
+        "scanLines": true
+      }
+    },
+    "terminal": {
+      "name": "终端绿",
+      "colors": {
+        "primary": "#00ff00",
+        "secondary": "#00cc00",
+        "accent": "#66ff66",
+        "background": "#000000",
+        "surface": "#0a0a0a",
+        "text": "#00ff00",
+        "textSecondary": "#00cc00"
+      },
+      "effects": {
+        "glitch": false,
+        "neon": false,
+        "particles": false,
+        "hologram": false,
+        "matrixRain": true,
+        "scanLines": true
+      }
+    },
+    "arctic": {
+      "name": "极地蓝",
+      "colors": {
+        "primary": "#00ccff",
+        "secondary": "#0080ff",
+        "accent": "#66ddff",
+        "background": "#001122",
+        "surface": "#002244",
+        "text": "#ffffff",
+        "textSecondary": "#aaccff"
+      },
+      "effects": {
+        "glitch": false,
+        "neon": true,
+        "particles": true,
+        "hologram": true,
+        "matrixRain": false,
+        "scanLines": false
+      }
+    },
+    "fire": {
+      "name": "烈焰红",
+      "colors": {
+        "primary": "#ff4500",
+        "secondary": "#ff6600",
+        "accent": "#ffaa00",
+        "background": "#1a0000",
+        "surface": "#330000",
+        "text": "#ffffff",
+        "textSecondary": "#ffccaa"
+      },
+      "effects": {
+        "glitch": true,
+        "neon": true,
+        "particles": true,
+        "hologram": false,
+        "matrixRain": false,
+        "scanLines": true
+      }
+    }
+  },
+  "settings": {
+    "animations": {
+      "enabled": true,
+      "speed": "normal",
+      "reducedMotion": false
+    },
+    "effects": {
+      "particleCount": 50,
+      "glitchIntensity": "medium",
+      "neonIntensity": "high",
+      "backgroundEffects": true
+    },
+    "performance": {
+      "highPerformanceMode": false,
+      "reducedEffects": false
+    },
+    "accessibility": {
+      "highContrast": false,
+      "largeText": false,
+      "reducedAnimations": false
     }
   }
 }
