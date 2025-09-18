@@ -1218,26 +1218,44 @@ section {
 }
 
 .skill-category {
-    background: white;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 245, 255, 0.3);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: var(--shadow-lg);
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 128, 0.05));
+    pointer-events: none;
 }
 
 .skill-category:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
 }
 
 .skill-category h3 {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: var(--primary-color);
     text-align: center;
     position: relative;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
 }
 
 .skill-category h3::after {
@@ -1246,59 +1264,88 @@ section {
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
+    width: 60px;
     height: 3px;
     background: var(--gradient-primary);
     border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
 }
 
 .skill-item {
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: var(--bg-secondary);
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 245, 255, 0.2);
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.skill-item:hover::before {
+    left: 100%;
 }
 
 .skill-item:hover {
-    background: #f0f4f8;
-    transform: translateX(5px);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 245, 255, 0.2);
 }
 
 .skill-icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    width: 40px;
+    font-size: 1.8rem;
+    margin-right: 1.5rem;
+    width: 50px;
     text-align: center;
+    z-index: 1;
+    position: relative;
 }
 
 .skill-info {
     flex: 1;
+    z-index: 1;
+    position: relative;
 }
 
 .skill-name {
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', monospace;
 }
 
 .skill-progress {
     width: 100%;
-    height: 8px;
-    background: #e2e8f0;
-    border-radius: 4px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .skill-progress-bar {
     height: 100%;
-    border-radius: 4px;
-    transition: width 1s ease-in-out;
+    border-radius: 5px;
+    transition: width 1.5s ease-in-out;
     position: relative;
     overflow: hidden;
+    background: var(--gradient-primary);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
 }
 
 .skill-progress-bar::after {
@@ -1308,7 +1355,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
     animation: shimmer 2s infinite;
 }
 
@@ -1318,10 +1365,14 @@ section {
 }
 
 .skill-level {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-left: 1.5rem;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    z-index: 1;
+    position: relative;
 }
 
 /* 经历部分 */
