@@ -1,89 +1,158 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的个人主页</title>
+    <title>个人简介 - 全栈开发工程师</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <h1>你好，我是 [你的名字]</h1>
-                <p>前端开发者 | UI/UX 设计师</p>
-                <a href="#contact" class="btn">联系我</a>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Portfolio</span>
             </div>
-        </div>
-    </header>
-
-    <section id="about">
-        <div class="container">
-            <h2>关于我</h2>
-            <div class="about-content">
-                <img src="https://via.placeholder.com/200" alt="我的头像" class="about-img">
-                <p>你好，我是一个充满热情的前端开发者，擅长设计与开发响应式、用户友好的网站和应用程序。我热衷于学习新技术，创造美观且实用的用户体验。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2>我的技能</h2>
-            <div class="skills-list">
-                <div class="skill-card">
-                    <h3>前端开发</h3>
-                    <p>熟练使用 HTML, CSS, JavaScript，React，Vue 等开发框架，打造响应式页面。</p>
-                </div>
-                <div class="skill-card">
-                    <h3>UI/UX 设计</h3>
-                    <p>精通 Figma 和 Sketch，能够设计出符合用户需求的界面和体验。</p>
-                </div>
-                <div class="skill-card">
-                    <h3>后端开发</h3>
-                    <p>具备 Node.js、Express 等后端开发经验，能够进行全栈开发。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>我的项目</h2>
-            <div class="project-cards">
-                <div class="project-card">
-                    <h3>个人博客</h3>
-                    <p>这是一个基于 React 和 Node.js 构建的博客系统，支持文章发布与评论功能。</p>
-                    <a href="#">查看项目</a>
-                </div>
-                <div class="project-card">
-                    <h3>电商平台</h3>
-                    <p>这是一个电商网站，具备商品浏览、购物车、支付等功能，使用 Vue.js 和 Firebase 构建。</p>
-                    <a href="#">查看项目</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>联系我</h2>
-            <p>如果你有任何问题或合作需求，欢迎通过以下方式联系我：</p>
-            <ul>
-                <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-                <li>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></li>
-                <li>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#experience" class="nav-link">经历</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
             </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页部分 -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-avatar">
+                    <img id="avatar" src="" alt="头像" class="avatar-img">
+                    <div class="avatar-ring"></div>
+                </div>
+                <h1 class="hero-title">
+                    <span class="greeting">你好，我是</span>
+                    <span id="name" class="name"></span>
+                </h1>
+                <p id="title" class="hero-subtitle"></p>
+                <p id="subtitle" class="hero-description"></p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">联系我</a>
+                    <a href="#projects" class="btn btn-secondary">查看作品</a>
+                </div>
+                <div class="social-links">
+                    <a id="github-link" href="#" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a id="linkedin-link" href="#" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a id="blog-link" href="#" class="social-link" target="_blank">
+                        <i class="fas fa-blog"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <footer>
+    <!-- 关于我部分 -->
+    <section id="about" class="about">
         <div class="container">
-            <p>© 2025 [你的名字]. 版权所有.</p>
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="bio" class="bio-text"></p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">年经验</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">项目完成</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">技术栈</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能部分 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">技能专长</h2>
+            <div id="skills-container" class="skills-grid">
+                <!-- 技能内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 经历部分 -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">工作经历</h2>
+            <div id="experience-container" class="timeline">
+                <!-- 经历内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">精选项目</h2>
+            <div id="projects-container" class="projects-grid">
+                <!-- 项目内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="email"></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span id="phone"></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="location"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 个人简介. 保留所有权利.</p>
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
